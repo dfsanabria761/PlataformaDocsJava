@@ -11,6 +11,7 @@
             },
             "account": {
                 "main": "Cuenta",
+                "name": "{{username}}",
                 "settings": "Ajustes",
                 "password": "Contraseña",
                 "sessions": "Sesiones",
@@ -121,5 +122,11 @@
         "emailexists": "Email is already in use!",
         "idexists": "A new {{entityName}} cannot already have an ID"
     },
-    "footer": "pie de página"
+    "footer":{
+        "head": "pie de página",
+        "credits":{
+            "icon": "Ícono hecho por Freepik de www.flaticon.com"
+        } 
+    }
+    
 }

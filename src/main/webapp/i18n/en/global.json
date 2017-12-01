@@ -121,5 +121,10 @@
         "emailexists": "Email is already in use!",
         "idexists": "A new {{ entityName }} cannot already have an ID"
     },
-    "footer": "This is your footer"
+    "footer":{
+        "head": "Footer",
+        "credits":{
+            "icon": "Icon made by Freepik from www.flaticon.com"
+        } 
+    }
 }

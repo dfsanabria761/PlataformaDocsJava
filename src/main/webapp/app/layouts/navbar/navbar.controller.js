@@ -23,7 +23,8 @@
         vm.toggleNavbar = toggleNavbar;
         vm.collapseNavbar = collapseNavbar;
         vm.$state = $state;
-
+        vm.mostrarNombre=false;
+        getAccount();
         function login() {
             collapseNavbar();
             LoginService.open();
@@ -41,6 +42,14 @@
 
         function collapseNavbar() {
             vm.isNavbarCollapsed = true;
+        }
+         function getAccount() {
+            Principal.identity().then(function(account) {
+                vm.account = account;
+                if(vm.account!=null){
+                    vm.mostrarNombre=true;
+                }
+            });
         }
     }
 })();
