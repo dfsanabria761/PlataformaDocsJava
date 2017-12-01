@@ -1,41 +1,203 @@
-<div ng-cloak>
-    <div class="row">
-        <div class="col-md-4">
-            <span class="hipster img-responsive img-rounded"></span>
-        </div>
-        <div class="col-md-8">
-            <h1 data-translate="home.title">Welcome, Java Hipster!</h1>
-            <p class="lead" data-translate="home.subtitle">This is your homepage</p>
+  <!DOCTYPE html>
+<!--
+Landing page based on Pratt: http://blacktie.co/demo/pratt/
+-->
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" >
+    <meta name="author" content="Sergi Tur Badenas - acacha.org">
+    
+    <meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
 
-            <div ng-switch="vm.isAuthenticated()">
-                <div class="alert alert-success" ng-switch-when="true" data-translate="home.logged.message" translate-values="{username: '{{vm.account.login}}'}">
-                    You are logged in as user "{{vm.account.login}}".
+    <meta property="og:title" content="Adminlte-laravel" />
+    <meta property="og:type" content="website" />
+    <meta property="og:description" content="Adminlte-laravel - {{ trans('adminlte_lang::message.landingdescription') }}" />
+    <meta property="og:url" content="http://demo.adminlte.acacha.org/" />
+    <meta property="og:image" content="http://demo.adminlte.acacha.org/img/AcachaAdminLTE.png" />
+    <meta property="og:image" content="http://demo.adminlte.acacha.org/img/AcachaAdminLTE600x600.png" />
+    <meta property="og:image" content="http://demo.adminlte.acacha.org/img/AcachaAdminLTE600x314.png" />
+    <meta property="og:sitename" content="demo.adminlte.acacha.org" />
+    <meta property="og:url" content="http://demo.adminlte.acacha.org" />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="@acachawiki" />
+    <meta name="twitter:creator" content="@acacha1" />
+
+    <title>Plataforma Docs</title>
+
+    <!-- Custom styles for this template -->
+
+    <link href='https://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Raleway:400,300,700' rel='stylesheet' type='text/css'>
+
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:600">
+    <style>
+      .OpenSans 
+      {
+        font-family: 'Open Sans', sans-serif;
+      }
+    </style>
+
+    <link href="https://fonts.googleapis.com/css?family=Inconsolata:700"> 
+    <style>
+      .Inconsolata
+      {
+        font-family: 'Inconsolata', monospace;
+      }
+    </style>
+
+    <link href="https://fonts.googleapis.com/css?family=Bree+Serif&amp;subset=latin-ext" rel="stylesheet"> 
+    <style>
+      .BreeSerif
+      {
+        font-family: 'Bree Serif', serif;
+      }
+    </style>
+
+    <link href="https://fonts.googleapis.com/css?family=Signika:700&amp;subset=latin-ext" rel="stylesheet"> 
+    <style>
+      .Signika
+      {
+        font-family: 'Signika', sans-serif;
+      }
+    </style>
+
+</head>
+
+<body data-spy="scroll" data-target="#navigation" data-offset="50">
+
+<div id="app" v-cloak>
+    <!-- Fixed navbar -->
+
+
+    <section id="home" name="home">
+        <div id="headerwrap">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <h1> <div style="font-family: 'Bree Serif', serif;" align="center">Plataforma Docs</div> </h1>
+                        
+                    </div>
+                    <div class="col-lg-3" align="center">
+                        <br>
+                        <br>
+                        <div class = "row">
+                            <h3> <div style="font-family: 'Inconsolata', monospace;"> Una plataforma web creada por y para estudiantes.</div></h3>
+                        </div>
+                        <br>
+                        <br>
+                        <br>
+                        
+                        <div class="row">
+                             <h3> <div style="font-family: 'Inconsolata', monospace;"> ¡Consulta los mejores documentos para tus clases!</div> </h3>
+                             <img class="hidden-xs hidden-sm hidden-md" style="margin-left: 200px;" src="content/images/arrow1.png">
+                        </div>
+                                                
+                    </div>
+                    <div class="col-lg-6" align="center">
+                       <figure >
+                            <img src="https://image.freepik.com/free-vector/uploading-background-design_1270-31.jpg" style="border: 2px solid #D35F55">
+                        </figure> 
+                        <br></br></>
+                        <a href="https://www.freepik.com/free-photos-vectors/background">Background vector created by Cornecoba - Freepik.com</a>
+                    </div>
+                    <div class="col-lg-3">
+                        <br>
+                          <img class="hidden-xs hidden-sm hidden-md" src="content/images/arrow2.png">
+                          <h3> <div style="font-family: 'Inconsolata', monospace;" align="center"> ¡Apoya a otros compañeros de clase con tu contenido!</div></h3>
+                    </div>
+                </div>
+            </div> <!--/ .container -->
+        </div><!--/ #headerwrap -->
+    </section>
+
+    <section id="desc" name="desc">
+        <!-- INTRO WRAP -->
+        <div id="intro">
+            <div class="container">
+                <div class="row" align="center">
+                    <h1>Diseñado para ti</h1>
+                    <br>
+                    <br>
+                    <div class="col-lg-4">
+                        <img src="https://image.flaticon.com/icons/svg/417/417780.svg" height="128" width="141">
+                        <h3>Comunidad estudiantil</h3>
+                        <p>Miles de estudiantes compartiendo su contenido para la misma comunidad.</p>
+                    </div>
+                    <div class="col-lg-4">
+                        <img src="https://image.flaticon.com/icons/svg/237/237098.svg" height="128" width="141">
+                        <h3>Contacta a otros</h3>
+                        <p>¿Encontraste un buen documento?. Contacta al estudiante que lo compartió.</p>
+                    </div>
+                    <div class="col-lg-4">
+                        <img src="https://image.flaticon.com/icons/svg/470/470340.svg" height="128" width="141">
+                        <h3>¡Gana puntos!</h3>
+                        <p>¡Gana puntos subiendo archivos que consideres importantes y gastalos descargando documentos que te ayuden en tu estudio!</p>
+                    </div>
+                </div>
+                <br>
+                <hr>
+            </div> <!--/ .container -->
+        </div><!--/ #introwrap -->
+
+    <section id="contact" name="contact">
+        <div id="footerwrap">
+            <div class="container">
+                <div class="col-lg-5" align="center">
+                    <h3>Dirección</h3>
+                    <p>
+                       Universidad de los Andes<br/>
+                        Bogotá D.C,
+                        Colombia
+                    </p>
                 </div>
 
-                <div class="alert alert-warning" ng-switch-when="false" data-translate="global.messages.info.authenticated" translate-compile>
-                    If you want to <a class="alert-link" href="" ng-click="vm.login()">sign in</a>, you can try the default accounts:<br/>- Administrator (login="admin" and password="admin") <br/>- User (login="user" and password="user").
-                </div>
-
-                <div class="alert alert-warning" ng-switch-when="false" data-translate="global.messages.info.register" translate-compile>
-                    You don't have an account yet? <a class="alert-link" ui-sref="register">Register a new account</a>
+                <div class="col-lg-7">
+                    <h3>¡Envíanos un mensaje!</h3>
+                    <br>
+                    <form role="form" action="#" method="post" enctype="plain">
+                        <div class="form-group">
+                            <label for="name1">Tu nombre</label>
+                            <input type="name" name="Name" class="form-control" id="name1" placeholder="Tu nombre">
+                        </div>
+                        <div class="form-group">
+                            <label for="email1">Escribe tu e-mail</label>
+                            <input type="email" name="Mail" class="form-control" id="email1" placeholder="E-mail">
+                        </div>
+                        <div class="form-group">
+                            <label>Mensaje</label>
+                            <textarea class="form-control" name="Message" rows="3" placeholder="Escribe tu mensaje"></textarea>
+                        </div>
+                        <br>
+                        <button type="submit" class="btn btn-large btn-success">Enviar mensaje</button>
+                    </form>
                 </div>
             </div>
-
-            <p data-translate="home.question">
-                If you have any question on JHipster:
-            </p>
-
-            <ul>
-                <li><a href="http://www.jhipster.tech/" target="_blank" rel="noopener" data-translate="home.link.homepage">JHipster homepage</a></li>
-                <li><a href="http://stackoverflow.com/tags/jhipster/info" target="_blank" rel="noopener" data-translate="home.link.stackoverflow">JHipster on Stack Overflow</a></li>
-                <li><a href="https://github.com/jhipster/generator-jhipster/issues?state=open" target="_blank" rel="noopener" data-translate="home.link.bugtracker">JHipster bug tracker</a></li>
-                <li><a href="https://gitter.im/jhipster/generator-jhipster" target="_blank" rel="noopener" data-translate="home.link.chat">JHipster public chat room</a></li>
-                <li><a href="https://twitter.com/java_hipster" target="_blank" rel="noopener" data-translate="home.link.follow">follow @java_hipster on Twitter</a></li>
-            </ul>
-
-            <p>
-             <span data-translate="home.like">If you like JHipster, don't forget to give us a star on </span>&nbsp;<a href="https://github.com/jhipster/generator-jhipster" target="_blank" rel="noopener" data-translate="home.github">GitHub</a>!
-            </p>
         </div>
-    </div>
+    </section>
+    <!-- <footer>
+        <div id="c">
+            <div class="container">
+                <p>
+                    <a href="https://github.com/acacha/adminlte-laravel"></a><b>admin-lte-laravel</b></a>. {{ trans('adminlte_lang::message.descriptionpackage') }}.<br/>
+                    <strong>Copyright &copy; 2015 <a href="http://acacha.org">Acacha.org</a>.</strong> {{ trans('adminlte_lang::message.createdby') }} <a href="http://acacha.org/sergitur">Sergi Tur Badenas</a>. {{ trans('adminlte_lang::message.seecode') }} <a href="https://github.com/acacha/adminlte-laravel">Github</a>
+                    <br/>
+                    AdminLTE {{ trans('adminlte_lang::message.createdby') }} Abdullah Almsaeed <a href="https://almsaeedstudio.com/">almsaeedstudio.com</a>
+                    <br/>
+                    Pratt Landing Page PROVA {{ trans('adminlte_lang::message.createdby') }} <a href="http://www.blacktie.co">BLACKTIE.CO</a>
+                </p>
+
+            </div>
+        </div>
+     </footer> -->
+
 </div>
+
+<!-- Bootstrap core JavaScript
+================================================== -->
+<!-- Placed at the end of the document so the pages load faster -->
+
+</body>
+</html>
