@@ -60,6 +60,9 @@ Development Ribbon
     pointer-events: none;
 }
 
+td{
+    background-color:  #34495e;
+}
 
 /* ==========================================================================
 Version number in navbar
