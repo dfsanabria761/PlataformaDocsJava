@@ -1,9 +1,9 @@
 <!-- Modal used to display the threads dump -->
-<div class="modal-header">
+<div class="modal-header" style="color:#f2f2f2;background-color: #34495e;">
     <button type="button" class="close" ng-click="vm.cancel()">&times;</button>
     <h4 class="modal-title" data-translate="metrics.jvm.threads.dump.title">Threads dump</h4>
 </div>
-<div class="modal-body pad">
+<div class="modal-body pad" style="color:#f2f2f2;background-color: #34495e;">
     <span class="label label-primary" ng-click="threadDumpFilter = {}">All&nbsp;<span class="badge">{{vm.threadDumpAll}}</span></span>&nbsp;
     <span class="label label-success" ng-click="threadDumpFilter = {threadState: 'RUNNABLE'}">Runnable&nbsp;<span class="badge">{{vm.threadDumpRunnable}}</span></span>&nbsp;
     <span class="label label-info" ng-click="threadDumpFilter = {threadState: 'WAITING'}">Waiting&nbsp;<span class="badge">{{vm.threadDumpWaiting}}</span></span>&nbsp;
@@ -48,6 +48,6 @@
 
     </div>
 </div>
-<div class="modal-footer">
+<div class="modal-footer" style="color:#f2f2f2;background-color: #34495e;">
     <button type="button" class="btn btn-default  pull-left" data-dismiss="modal" ng-click="vm.cancel()">Done</button>
 </div>

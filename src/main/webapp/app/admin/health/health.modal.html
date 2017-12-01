@@ -1,4 +1,4 @@
-<div class="modal-header">
+<div class="modal-header" style="color:#f2f2f2;background-color: #34495e;">
     <button aria-label="Close" data-dismiss="modal" class="close" type="button" ng-click="vm.cancel()"><span aria-hidden="true">&times;</span>
     </button>
     <h4 class="modal-title" id="showHealthLabel">
@@ -6,7 +6,7 @@
         {{vm.subSystemName(vm.currentHealth.name)}}
     </h4>
 </div>
-<div class="modal-body pad">
+<div class="modal-body pad" style="color:#f2f2f2;background-color: #34495e;">
     <div ng-show="vm.currentHealth.details">
         <h4 data-translate="health.details.properties">Properties</h4>
         <table class="table table-striped">
@@ -29,6 +29,6 @@
             <pre>{{vm.currentHealth.error}}</pre>
     </div>
 </div>
-<div class="modal-footer">
+<div class="modal-footer" style="color:#f2f2f2;background-color: #34495e;">
     <button data-dismiss="modal" class="btn btn-default pull-left" type="button" ng-click="vm.cancel()">Done</button>
 </div>
