@@ -1,4 +1,4 @@
-<div>
+<div style="color:#f2f2f2;background-color: #34495e;">
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
             <h1 data-translate="register.title">Registration</h1>
@@ -113,11 +113,9 @@
                 </div>
 
                 <button type="submit" ng-disabled="form.$invalid" class="btn btn-primary" data-translate="register.form.button">Register</button>
+                <button ui-sref="home" class="btn btn-danger" data-translate="register.form.cancel">Cancel</button>
             </form>
             <p></p>
-            <div class="alert alert-warning" data-translate="global.messages.info.authenticated" translate-compile>
-                If you want to <a class="alert-link" href="" ng-click="vm.login()">sign in</a>, you can try the default accounts:<br/>- Administrator (login="admin" and password="admin") <br/>- User (login="user" and password="user").
-            </div>
         </div>
     </div>
 </div>

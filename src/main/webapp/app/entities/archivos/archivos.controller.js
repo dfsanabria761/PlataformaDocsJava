@@ -3,13 +3,13 @@
 
     angular
         .module('plataformaDocsApp')
-        .controller('HomeController', HomeController);
+        .controller('ArchivosController', ArchivosController);
 
-    HomeController.$inject = ['$scope', 'Principal', 'LoginService', '$state','Auth','ProfileService'];
+    ArchivosController.$inject = ['$scope', 'Principal', 'LoginService', '$state','Auth','ProfileService'];
 
-    function HomeController ($scope, Principal, LoginService, $state,Auth, ProfileService,) {
+    function ArchivosController ($scope, Principal, LoginService, $state,Auth, ProfileService,) {
         var vm = this;
-        
+        vm.archivos =[];
         vm.account = null;
         vm.isAuthenticated = null;
         vm.login = LoginService.open;
@@ -82,16 +82,10 @@
             if (err) {
                 results.innerHTML = ("Error al subir datos: ", err);
             } else {
-                for(var i = 0; i < response.Contents.length; i++){
-                    results.insertAdjacentHTML('beforeend', pdf);
-                    results.insertAdjacentHTML('beforeend', '<a href="https://s3-us-east-2.amazonaws.com/' 
-                    + delimiters.Bucket + delimiters.Delimiter 
-                    + response.Contents[i].Key 
-                    + '" target="_blank">' 
-                    + response.Contents[i].Key 
-                    + '</a>');
-                }
-            }                
+            vm.archivos=response.Contents;
+            return vm.archivos;
+            }
+            $scope.$broadcast("REFRESH");
         });
 
     }

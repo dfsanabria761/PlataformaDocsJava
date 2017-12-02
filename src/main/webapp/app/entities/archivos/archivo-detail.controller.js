@@ -3,13 +3,13 @@
 
     angular
         .module('plataformaDocsApp')
-        .controller('HomeController', HomeController);
+        .controller('ArchivoDetailController', ArchivoDetailController);
 
-    HomeController.$inject = ['$scope', 'Principal', 'LoginService', '$state','Auth','ProfileService'];
+    ArchivoDetailController.$inject = ['$scope', 'Principal', 'LoginService', '$state','Auth','ProfileService'];
 
-    function HomeController ($scope, Principal, LoginService, $state,Auth, ProfileService,) {
+    function ArchivoDetailController ($scope, Principal, LoginService, $state,Auth, ProfileService,) {
         var vm = this;
-        
+
         vm.account = null;
         vm.isAuthenticated = null;
         vm.login = LoginService.open;

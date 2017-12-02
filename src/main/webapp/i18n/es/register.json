@@ -2,7 +2,8 @@
     "register": {
         "title": "Registro",
         "form": {
-            "button": "Crear la cuenta"
+            "button": "Crear la cuenta",
+            "cancel": "Cancelar"
         },
         "messages": {
             "validate": {
