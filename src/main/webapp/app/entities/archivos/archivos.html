@@ -1,14 +1,16 @@
+<!-->
 <div ng-cloak>             
     <div  ng-switch="vm.isAuthenticated()">
                         <div class="row">
                              <h3> <div style="font-family: 'Inconsolata', monospace;"> ¡Consulta los mejores documentos para tus clases!</div> </h3>
                              <img class="hidden-xs hidden-sm hidden-md" style="margin-left: 200px;" src="content/images/arrow1.png">
                         </div>
-                        <div class="pull-right" class="row" ui-sref-active="active" ng-switch-when="true">
+                        
                             <input class="btn btn-primary" id="file-chooser" type="file"  accept="application/pdf" />
-                            
-                        </div>  
+                             
                             <button id="upload-button" class="btn btn-primary pull-right">Subir archivos</button>
+
+
                         <div  class="row pull-right" ui-sref-active="active" ng-switch-when="false">
                             <div class="alert alert-warning">
                              <strong>¡Atención!</strong> Sólo se pueden subir archivos tras iniciar sesión.
@@ -62,3 +64,14 @@
     </section> 
 </div>
 </div>
+<!-->
+    <div class="row">
+                        <div class="col-sm-15 portfolio-item">
+                            <div class="card h-100">
+                                    <div class="col-sm-4 portfolio-item">
+                                        <div id="results"></div>
+                                    </div>
+                            </div>
+                        </div>  
+                     </div>
+

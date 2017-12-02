@@ -23,20 +23,7 @@
                     controller: 'ArchivosController',
                     controllerAs: 'vm'
                 }
-            },    
-            onEnter:['$stateParams', '$state', '$uibModal', function($stateParams, $state, $uibModal) {
-                    $uibModal.open({
-                        templateUrl: 'app/entities/archivos/archivos.html',
-                        controller: 'ArchivosController',
-                        controllerAs: 'vm',
-                        backdrop: 'static',
-                        size: 'lg'
-                    }).result.then(function() {
-                        $state.go('archivos');
-                    }, function() {
-                        $state.go('archivos');
-                    });
-                }],        
+            },         
             resolve: {
                 pagingParams: ['$stateParams', 'PaginationUtil', function ($stateParams, PaginationUtil) {
 

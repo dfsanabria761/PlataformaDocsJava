@@ -76,7 +76,7 @@
             EncodingType: "url"
         };
 
-         
+         /*
         bucket.listObjects(delimiters, function (err, response) {
             var pdf = "<img src=https://image.flaticon.com/icons/svg/337/337946.svg alt='PDF' width='70' height='70'>";
             if (err) {
@@ -86,6 +86,23 @@
             return vm.archivos;
             }
             $scope.$broadcast("REFRESH");
+        });
+        */
+        bucket.listObjects(delimiters, function (err, response) {
+            var pdf = "<img src=https://image.flaticon.com/icons/svg/337/337946.svg alt='PDF' width='70' height='70'>";
+            if (err) {
+                results.innerHTML = ("Error al subir datos: ", err);
+            } else {
+                for(var i = 0; i < response.Contents.length; i++){
+                    results.insertAdjacentHTML('beforeend', pdf);
+                    results.insertAdjacentHTML('beforeend', '<a href="https://s3-us-east-2.amazonaws.com/' 
+                    + delimiters.Bucket + delimiters.Delimiter 
+                    + response.Contents[i].Key 
+                    + '" target="_blank">' 
+                    + response.Contents[i].Key 
+                    + '</a>');
+                }
+            }       
         });
 
     }
