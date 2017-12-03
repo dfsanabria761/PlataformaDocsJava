@@ -85,6 +85,7 @@
     "test": "gulp test"
   },
   "dependencies": {
+    "angular-ui-bootstrap": "^2.5.6",
     "aws-sdk": "^2.161.0",
     "progress": "^2.0.0",
     "uuid": "^3.1.0"
