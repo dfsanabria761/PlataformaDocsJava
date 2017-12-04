@@ -38,6 +38,16 @@
         AWS.config.update(credentials);
         AWS.config.region = 'us-east-2';
 
+        var materia = "";
+
+        $("#tableMenu a").click(function(e){
+        e.preventDefault(); // cancel the link behaviour
+        var selText = $(this).text();
+        materia = selText;
+        $("#tableButton").text(selText);
+    });
+        
+
         // create bucket instance
         var bucket = new AWS.S3({params: {Bucket: 'platformadocs'}});
 
@@ -45,33 +55,55 @@
         var button = document.getElementById('upload-button');
         var results = document.getElementById('results');
         var allItems = document.getElementById('allItems');
+
         button.addEventListener('click', function() {
-            if(fileChooser==null){
+            if(fileChooser==null || materia == "")
+            {
                 return;
             }
             var file = fileChooser.files[0];
+            var newFile = "";
+
+            if(materia == "Física")
+            {
+                newFile = "FISI-" + file.name;
+            }
+            else if(materia == "ANADEC")
+            {
+                newFile = "ANA-" + file.name;
+            }
 
             var extension = file.type.split("/");
             if(extension[1] == "pdf")
             {
-                if (file) {
+                if (file) 
+                {
 
-                results.innerHTML = '';
+                    results.innerHTML = '';
 
-                var params = {Key: file.name, ContentType: file.type, Body: file};
-                bucket.upload(params, function (err, data) {
-                    results.innerHTML = err ? 'ERROR!' : 'SUBIDO.';
-                });
-            } else {
-                results.innerHTML = 'Nada para subir.';
+                    var params = {Key: newFile, ContentType: file.type, Body: file};
+                    var action = bucket.upload(params, function (err, data) {
+                        results.innerHTML = err ? 'ERROR!' : 'SUBIDO.';
+                    });
+                } 
+                else 
+                {
+                    results.innerHTML = 'Nada para subir.';
+                }
             }
-            }
-            else{
+            else
+            {
                 results.innerHTML = "El formato del archivo no está permitido, solo se pueden subir archivos .pdf"
             }
-            
+
+            if(action.failed == false)
+            {
+                location.reload();
+            }
+
         }, false);
 
+        
 
         var delimiters = {
             Bucket: "platformadocs",

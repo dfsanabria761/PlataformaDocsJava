@@ -1,12 +1,24 @@
 <!-->
-<div ng-cloak>             
-    <div  ng-switch="vm.isAuthenticated()">
-                        <div class="row">
-                             <h3> <div style="font-family: 'Inconsolata', monospace;"> ¡Consulta los mejores documentos para tus clases!</div> </h3>
-                             <img class="hidden-xs hidden-sm hidden-md" style="margin-left: 200px;" src="content/images/arrow1.png">
-                        </div>
+<div ng-cloak>  
+<div class="row">
+                             <h3> <div style="font-family: 'Inconsolata', monospace;"> Sube los mejores documentos para tus clases!</div> </h3>
+                             <div style="margin-top: 100px;"> <img class="hidden-xs hidden-sm col-sm-offset-2 style="margin-left: 100px;margin-top: 100px" src="content/images/arrow3.png"></div>
+                        </div>           
+    <div  ng-switch="vm.isAuthenticated()" style="text-align:center;">
                         
-                            <input class="btn btn-primary" id="file-chooser" type="file"  accept="application/pdf" />
+                        
+                            <input class="btn btn-primary" style="align-top:100px" id="file-chooser" type="file"  accept="application/pdf" />
+
+                            <div id="tableDiv" class="dropdown" style="display: inline-block;">
+                                <button id="tableButton" class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">
+                                    Materia
+                                    <span class="caret"></span>
+                                </button>
+                                <ul id="tableMenu" class="dropdown-menu">
+                                    <li><a>Física</a></li>
+                                    <li><a>Anadec</a></li>
+                                </ul>
+                            </div>
                              
                             <button id="upload-button" class="btn btn-primary pull-right">Subir archivos</button>
 
@@ -49,6 +61,8 @@
 </div>
 </div>
 <!-->
+
+
     <link href="https://fonts.googleapis.com/css?family=Quicksand:300" rel="stylesheet">
     <style>
       body {
