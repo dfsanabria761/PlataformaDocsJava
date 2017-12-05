@@ -65,14 +65,51 @@
 
     <link href="https://fonts.googleapis.com/css?family=Quicksand:300" rel="stylesheet">
     <style>
-      body {
+    body {
         font-family: 'Quicksand', sans-serif;
-      }
-    </style>
+    }
+</style>
 
-    <div class="container">
-        <div id="results"></div>
+<div class="container">
+    <div id="results"></div>
     <div class="row" id="allItems">
-
+        <div ng-repeat="materia in materias">
+            <div class="col-sm-4 col-md-4">
+                <div class="post">
+                    <img src="content/images/folder.png" class="img-responsive"/>
+                    <span class="post-title"><b> {{materia.nombre}} </b><br/> </span>
+                    <button class="btn btn-warning btn-sm" id="btnModal" data-toggle="modal" data-target="#modal{{materia.nombre}}">Leer más</button>
+                    <div class="modal fade" id="modal{{materia.nombre}}" role="dialog">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal{{materia.nombre}}">&times;</button>
+                                    <h4 class="modal-title" style="color:#000" >¡Mira los archivos que tenemos para ti!</h4>
+                                </div>
+                                <div class="modal-body">
+                                    <div class="row">
+                                        <div class=" col-sm-12">
+                                            <p style="color:#000" class="list-group-item"> 
+                                                <div ng-repeat="url in materia.urls">
+                                                    <a target="_blank" style="color:#0000FF" href={{url.url}}>
+                                                        {{url.fileName}} 
+                                                    </a> 
+                                                    <br></br>
+                                                </div>
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
+
+</div>
 </div>

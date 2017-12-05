@@ -1,52 +1,57 @@
-(function() {
-    'use strict';
+(
+    function() 
+    {
+        'use strict';
 
-    angular
+        angular
         .module('plataformaDocsApp')
+
         .controller('ArchivosController', ArchivosController);
+        ArchivosController.$inject = ['$scope', 'Principal', 'LoginService', '$state','Auth','ProfileService'];
 
-    ArchivosController.$inject = ['$scope', 'Principal', 'LoginService', '$state','Auth','ProfileService'];
+        function ArchivosController ($scope, Principal, LoginService, $state,Auth, ProfileService)
+        {
 
-    function ArchivosController ($scope, Principal, LoginService, $state,Auth, ProfileService,) {
-        var vm = this;
-        vm.archivos =[];
-        vm.account = null;
-        vm.isAuthenticated = null;
-        vm.login = LoginService.open;
-        vm.register = register;
-        vm.$state = $state;
-        $scope.$on('authenticationSuccess', function() {
-            getAccount();
-        });
-
-        getAccount();
-
-        function getAccount() {
-            Principal.identity().then(function(account) {
-                vm.account = account;
-                vm.isAuthenticated = Principal.isAuthenticated;
-
+            var vm = this;
+            vm.archivos =[];
+            $scope.materias = [{key:"ANA",nombre:"Anadec",urls:[]},{key:"FISI",nombre:"Física",urls:[]}];
+            vm.account = null;
+            vm.isAuthenticated = null;
+            vm.login = LoginService.open;
+            vm.register = register;
+            vm.$state = $state;
+            $scope.$on('authenticationSuccess', function() {
+                getAccount();
             });
-        }
-        function register () {
-            $state.go('register');
-        }
 
-        
+            getAccount();
 
-        var credentials = {accessKeyId: 'AKIAJXXCEVL457EGVDFQ', secretAccessKey: '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'};
-        AWS.config.update(credentials);
-        AWS.config.region = 'us-east-2';
+            function getAccount() {
+                Principal.identity().then(function(account) {
+                    vm.account = account;
+                    vm.isAuthenticated = Principal.isAuthenticated;
 
-        var materia = "";
+                });
+            }
+            function register () {
+                $state.go('register');
+            }
 
-        $("#tableMenu a").click(function(e){
+
+
+            var credentials = {accessKeyId: 'AKIAJXXCEVL457EGVDFQ', secretAccessKey: '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'};
+            AWS.config.update(credentials);
+            AWS.config.region = 'us-east-2';
+
+            var materia = "";
+
+            $("#tableMenu a").click(function(e){
         e.preventDefault(); // cancel the link behaviour
         var selText = $(this).text();
         materia = selText;
         $("#tableButton").text(selText);
     });
-        
+
 
         // create bucket instance
         var bucket = new AWS.S3({params: {Bucket: 'platformadocs'}});
@@ -95,9 +100,10 @@
             {
                 results.innerHTML = "El formato del archivo no está permitido, solo se pueden subir archivos .pdf"
             }
-
-            if(action.failed == false)
+            console.log(action);
+            if(!action.failed)
             {
+                $scope.$apply();
                 location.reload();
             }
 
@@ -122,96 +128,25 @@
             }
             $scope.$broadcast("REFRESH");
         });
-        */
-        
+        */  
 
-        bucket.listObjects(delimiters, function (err, response) 
+        bucket.listObjects(delimiters,function (err, response)
         {
-            var fileNameAna = '';
-            var fileNameFisi = '';
             for(var i = 0; i < response.Contents.length; i++)
             {
-                if(response.Contents[i].Key.startsWith("ANA"))
+                for(var j = 0; j < $scope.materias.length; j++)
                 {
-                    fileNameAna += '<a href="https://s3-us-east-2.amazonaws.com/' 
-                    + delimiters.Bucket 
-                    + delimiters.Delimiter 
-                    + response.Contents[i].Key 
-                    + '" target="_blank" style="color:#0000FF">'
-                    + response.Contents[i].Key 
-                    + ' </a> <br></br>';
-                }
-                else if(response.Contents[i].Key.startsWith("FISI"))
-                {
-                    fileNameFisi += '<a href="https://s3-us-east-2.amazonaws.com/' 
-                    + delimiters.Bucket 
-                    + delimiters.Delimiter 
-                    + response.Contents[i].Key 
-                    + '" target="_blank" style="color:#0000FF">'
-                    + response.Contents[i].Key 
-                    + ' </a> <br></br>';
+                    if(response.Contents[i].Key.startsWith($scope.materias[j].key))
+                    {
+                        var url = "https://s3-us-east-2.amazonaws.com/" 
+                        + delimiters.Bucket 
+                        + delimiters.Delimiter 
+                        + response.Contents[i].Key;
+                        $scope.materias[j].urls.push( {url:url,fileName:response.Contents[i].Key});
+                    }
                 }
             }
-            allItems.insertAdjacentHTML("beforeend", '<div class="col-sm-4 col-md-4"'
-                        + '<div class="post">'
-                        + '<img src="content/images/folder.png" class="img-responsive"/>'
-                        + '<span class="post-title"><b> ANADEC </b><br/> </span>'
-                        + '<button class="btn btn-warning btn-sm" id="btnAnadec" data-toggle="modal" data-target="#modalAnadec">Leer más</button>'
-                        + '<div class="modal fade" id="modalAnadec" role="dialog">'
-                        + '<div class="modal-dialog">'
-                        + '<div class="modal-content">'
-                        + '<div class="modal-header">'
-                        + '<button type="button" class="close" data-dismiss="modal">&times;</button>'
-                        + '<h4 class="modal-title" style="color:#000" >¡Mira los archivos que tenemos para ti!</h4>'
-                        + '</div>'
-                        + '<div class="modal-body">'
-                        + '<div class="row">'
-                        + '<div class=" col-sm-12">'
-                        + '<p style="color:#000" class="list-group-item">' + fileNameAna + '</p>'
-                        + ' </div>'
-                        + ' </div>'
-                        + ' </div>'
-                        + '<div class="modal-footer">'
-                        + '<button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>'
-                        + '</div>'
-                        + ' </div>'
-                        + ' </div>'
-                        + ' </div>'
-                        + ' </div>' 
-                        + '<div class="content">'
-                        + ' </div>'
-                        + ' </div>'
-                        + ' </div>');
-            allItems.insertAdjacentHTML("beforeend", '<div class="col-sm-4 col-md-4"'
-                        + '<div class="post">'
-                        + '<img src="content/images/folder.png" class="img-responsive"/>'
-                        + '<span class="post-title"><b> FÍSICA </b><br/> </span>'
-                        + '<button class="btn btn-warning btn-sm" id="btnFisi" data-toggle="modal" data-target="#modalFisi">Leer más</button>'
-                        + '<div class="modal fade" id="modalFisi" role="dialog">'
-                        + '<div class="modal-dialog">'
-                        + '<div class="modal-content">'
-                        + '<div class="modal-header">'
-                        + '<button type="button" class="close" data-dismiss="modal">&times;</button>'
-                        + '<h4 class="modal-title" style="color:#000" >¡Mira los archivos que tenemos para ti!</h4>'
-                        + '</div>'
-                        + '<div class="modal-body">'
-                        + '<div class="row">'
-                        + '<div class=" col-sm-12">'
-                        + '<p style="color:#000" class="list-group-item">' + fileNameFisi + '</p>'
-                        + ' </div>'
-                        + ' </div>'
-                        + ' </div>'
-                        + '<div class="modal-footer">'
-                        + '<button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>'
-                        + '</div>'
-                        + ' </div>'
-                        + ' </div>'
-                        + ' </div>'
-                        + ' </div>' 
-                        + '<div class="content">'
-                        + ' </div>'
-                        + ' </div>'
-                        + ' </div>');
+            $scope.$apply();
         });
     }
 })();
