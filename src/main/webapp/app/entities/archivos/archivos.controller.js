@@ -117,10 +117,6 @@
 			{
 				results.innerHTML = "El formato del archivo no está permitido, solo se pueden subir archivos .pdf"
 			}
-			if(!action.failed)
-			{
-				$scope.$apply();
-			}
 		}, false);
 		
 
