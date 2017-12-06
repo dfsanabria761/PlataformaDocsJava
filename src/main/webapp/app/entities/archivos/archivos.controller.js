@@ -100,11 +100,8 @@
 						}
 						else
 						{
-							var id = 'filename' + materia;
-							var modal = document.getElementById(id);
-
 							results.innerHTML = '¡Tu archivo fue correctamente subido!';
-							modal.innerHTML = newFile;
+							location.reload();
 						}
 					});
 				} 
