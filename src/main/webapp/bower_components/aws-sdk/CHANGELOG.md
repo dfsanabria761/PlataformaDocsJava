@@ -1,6 +1,26 @@
 # Changelog for AWS SDK for JavaScript
-<!--LATEST=2.162.0-->
+<!--LATEST=2.167.0-->
 <!--ENTRYINSERT-->
+
+## 2.167.0
+* feature: AppStream: This API update is to support the feature that allows customers to automatically consume the latest Amazon AppStream 2.0 agent as and when published by AWS.
+* feature: CloudWatch: With this launch, you can now create a CloudWatch alarm that alerts you when M out of N datapoints of a metric are breaching your predefined threshold, such as three out of five times in any given five minutes interval or two out of six times in a thirty minutes interval. When M out of N datapoints are not breaching your threshold in an interval, the alarm will be in OK state. Please note that the M datapoints out of N datapoints in an interval can be of any order and does not need to be consecutive. Consequently, you can now get alerted even when the spikes in your metrics are intermittent over an interval.
+
+## 2.166.0
+* feature: ES: Added support for encryption of data at rest on Amazon Elasticsearch Service using AWS KMS
+* feature: SES: Customers can customize the emails that Amazon SES sends when verifying new identities. This feature is helpful for developers whose applications send email through Amazon SES on behalf of their customers.
+
+## 2.165.0
+* feature: CloudDirectory: Amazon Cloud Directory makes it easier for you to apply schema changes across your directories with in-place schema upgrades. Your directories now remain available while backward-compatible schema changes are being applied, such as the addition of new fields. You also can view the history of your schema changes in Cloud Directory by using both major and minor version identifiers, which can help you track and audit schema versions across directories.
+* feature: SageMaker: Initial waiters for common SageMaker workflows.
+
+## 2.164.0
+* feature: Iot: Add error action API for RulesEngine. 
+* feature: ServiceCatalog: ServiceCatalog has two distinct personas for its use, an "admin" persona (who creates sets of products with different versions and prescribes who has access to them) and an "end-user" persona (who can launch cloud resources based on the configuration data their admins have given them access to).  This API update will allow admin users to deactivate/activate product versions, end-user will only be able to access and launch active product versions. 
+* feature: ServiceDiscovery: Amazon Route 53 Auto Naming lets you configure public or private namespaces that your microservice applications run in. When instances of the service become available, you can call the Auto Naming API to register the instance, and Amazon Route 53 automatically creates up to five DNS records and an optional health check. Clients that submit DNS queries for the service receive an answer that contains up to eight healthy records.
+
+## 2.163.0
+* feature: Budgets: Add additional costTypes to support finer control for different charges included in a cost budget.
 
 ## 2.162.0
 * feature: SageMaker: Preparing to release updated waiters week of December 4, 2017 for all supported SDKs.

@@ -1,4 +1,4 @@
-// AWS SDK for JavaScript v2.162.0
+// AWS SDK for JavaScript v2.167.0
 // Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
 // License at https://sdk.amazonaws.com/js/BUNDLE_LICENSE.txt
 (function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
@@ -55348,6 +55348,27 @@ module.exports={
         "members": {}
       }
     },
+    "CreateCustomVerificationEmailTemplate": {
+      "input": {
+        "type": "structure",
+        "required": [
+          "TemplateName",
+          "FromEmailAddress",
+          "TemplateSubject",
+          "TemplateContent",
+          "SuccessRedirectionURL",
+          "FailureRedirectionURL"
+        ],
+        "members": {
+          "TemplateName": {},
+          "FromEmailAddress": {},
+          "TemplateSubject": {},
+          "TemplateContent": {},
+          "SuccessRedirectionURL": {},
+          "FailureRedirectionURL": {}
+        }
+      }
+    },
     "CreateReceiptFilter": {
       "input": {
         "type": "structure",
@@ -55356,7 +55377,7 @@ module.exports={
         ],
         "members": {
           "Filter": {
-            "shape": "St"
+            "shape": "S10"
           }
         }
       },
@@ -55377,7 +55398,7 @@ module.exports={
           "RuleSetName": {},
           "After": {},
           "Rule": {
-            "shape": "S11"
+            "shape": "S18"
           }
         }
       },
@@ -55411,7 +55432,7 @@ module.exports={
         ],
         "members": {
           "Template": {
-            "shape": "S1t"
+            "shape": "S20"
           }
         }
       },
@@ -55469,6 +55490,17 @@ module.exports={
         "resultWrapper": "DeleteConfigurationSetTrackingOptionsResult",
         "type": "structure",
         "members": {}
+      }
+    },
+    "DeleteCustomVerificationEmailTemplate": {
+      "input": {
+        "type": "structure",
+        "required": [
+          "TemplateName"
+        ],
+        "members": {
+          "TemplateName": {}
+        }
       }
     },
     "DeleteIdentity": {
@@ -55592,10 +55624,10 @@ module.exports={
         "type": "structure",
         "members": {
           "Metadata": {
-            "shape": "S2m"
+            "shape": "S2t"
           },
           "Rules": {
-            "shape": "S2o"
+            "shape": "S2v"
           }
         }
       }
@@ -55664,7 +55696,7 @@ module.exports={
         "type": "structure",
         "members": {
           "Rule": {
-            "shape": "S11"
+            "shape": "S18"
           }
         }
       }
@@ -55684,10 +55716,10 @@ module.exports={
         "type": "structure",
         "members": {
           "Metadata": {
-            "shape": "S2m"
+            "shape": "S2t"
           },
           "Rules": {
-            "shape": "S2o"
+            "shape": "S2v"
           }
         }
       }
@@ -55703,6 +55735,29 @@ module.exports={
         }
       }
     },
+    "GetCustomVerificationEmailTemplate": {
+      "input": {
+        "type": "structure",
+        "required": [
+          "TemplateName"
+        ],
+        "members": {
+          "TemplateName": {}
+        }
+      },
+      "output": {
+        "resultWrapper": "GetCustomVerificationEmailTemplateResult",
+        "type": "structure",
+        "members": {
+          "TemplateName": {},
+          "FromEmailAddress": {},
+          "TemplateSubject": {},
+          "TemplateContent": {},
+          "SuccessRedirectionURL": {},
+          "FailureRedirectionURL": {}
+        }
+      }
+    },
     "GetIdentityDkimAttributes": {
       "input": {
         "type": "structure",
@@ -55711,7 +55766,7 @@ module.exports={
         ],
         "members": {
           "Identities": {
-            "shape": "S32"
+            "shape": "S3b"
           }
         }
       },
@@ -55737,7 +55792,7 @@ module.exports={
                 },
                 "DkimVerificationStatus": {},
                 "DkimTokens": {
-                  "shape": "S37"
+                  "shape": "S3g"
                 }
               }
             }
@@ -55753,7 +55808,7 @@ module.exports={
         ],
         "members": {
           "Identities": {
-            "shape": "S32"
+            "shape": "S3b"
           }
         }
       },
@@ -55792,7 +55847,7 @@ module.exports={
         ],
         "members": {
           "Identities": {
-            "shape": "S32"
+            "shape": "S3b"
           }
         }
       },
@@ -55846,7 +55901,7 @@ module.exports={
         "members": {
           "Identity": {},
           "PolicyNames": {
-            "shape": "S3m"
+            "shape": "S3v"
           }
         }
       },
@@ -55873,7 +55928,7 @@ module.exports={
         ],
         "members": {
           "Identities": {
-            "shape": "S32"
+            "shape": "S3b"
           }
         }
       },
@@ -55964,7 +56019,7 @@ module.exports={
         "type": "structure",
         "members": {
           "Template": {
-            "shape": "S1t"
+            "shape": "S20"
           }
         }
       }
@@ -55993,6 +56048,37 @@ module.exports={
         }
       }
     },
+    "ListCustomVerificationEmailTemplates": {
+      "input": {
+        "type": "structure",
+        "members": {
+          "NextToken": {},
+          "MaxResults": {
+            "type": "integer"
+          }
+        }
+      },
+      "output": {
+        "resultWrapper": "ListCustomVerificationEmailTemplatesResult",
+        "type": "structure",
+        "members": {
+          "CustomVerificationEmailTemplates": {
+            "type": "list",
+            "member": {
+              "type": "structure",
+              "members": {
+                "TemplateName": {},
+                "FromEmailAddress": {},
+                "TemplateSubject": {},
+                "SuccessRedirectionURL": {},
+                "FailureRedirectionURL": {}
+              }
+            }
+          },
+          "NextToken": {}
+        }
+      }
+    },
     "ListIdentities": {
       "input": {
         "type": "structure",
@@ -56012,7 +56098,7 @@ module.exports={
         ],
         "members": {
           "Identities": {
-            "shape": "S32"
+            "shape": "S3b"
           },
           "NextToken": {}
         }
@@ -56036,7 +56122,7 @@ module.exports={
         ],
         "members": {
           "PolicyNames": {
-            "shape": "S3m"
+            "shape": "S3v"
           }
         }
       }
@@ -56053,7 +56139,7 @@ module.exports={
           "Filters": {
             "type": "list",
             "member": {
-              "shape": "St"
+              "shape": "S10"
             }
           }
         }
@@ -56073,7 +56159,7 @@ module.exports={
           "RuleSets": {
             "type": "list",
             "member": {
-              "shape": "S2m"
+              "shape": "S2t"
             }
           },
           "NextToken": {}
@@ -56116,7 +56202,7 @@ module.exports={
         "type": "structure",
         "members": {
           "VerifiedEmailAddresses": {
-            "shape": "S4p"
+            "shape": "S53"
           }
         }
       }
@@ -56185,7 +56271,7 @@ module.exports={
                 "type": "timestamp"
               },
               "ExtensionFields": {
-                "shape": "S51"
+                "shape": "S5f"
               }
             }
           },
@@ -56216,7 +56302,7 @@ module.exports={
                       "type": "timestamp"
                     },
                     "ExtensionFields": {
-                      "shape": "S51"
+                      "shape": "S5f"
                     }
                   }
                 }
@@ -56246,13 +56332,13 @@ module.exports={
           "Source": {},
           "SourceArn": {},
           "ReplyToAddresses": {
-            "shape": "S4p"
+            "shape": "S53"
           },
           "ReturnPath": {},
           "ReturnPathArn": {},
           "ConfigurationSetName": {},
           "DefaultTags": {
-            "shape": "S5g"
+            "shape": "S5u"
           },
           "Template": {},
           "TemplateArn": {},
@@ -56266,10 +56352,10 @@ module.exports={
               ],
               "members": {
                 "Destination": {
-                  "shape": "S5n"
+                  "shape": "S61"
                 },
                 "ReplacementTags": {
-                  "shape": "S5g"
+                  "shape": "S5u"
                 },
                 "ReplacementTemplateData": {}
               }
@@ -56298,6 +56384,27 @@ module.exports={
         }
       }
     },
+    "SendCustomVerificationEmail": {
+      "input": {
+        "type": "structure",
+        "required": [
+          "EmailAddress",
+          "TemplateName"
+        ],
+        "members": {
+          "EmailAddress": {},
+          "TemplateName": {},
+          "ConfigurationSetName": {}
+        }
+      },
+      "output": {
+        "resultWrapper": "SendCustomVerificationEmailResult",
+        "type": "structure",
+        "members": {
+          "MessageId": {}
+        }
+      }
+    },
     "SendEmail": {
       "input": {
         "type": "structure",
@@ -56309,7 +56416,7 @@ module.exports={
         "members": {
           "Source": {},
           "Destination": {
-            "shape": "S5n"
+            "shape": "S61"
           },
           "Message": {
             "type": "structure",
@@ -56319,29 +56426,29 @@ module.exports={
             ],
             "members": {
               "Subject": {
-                "shape": "S5v"
+                "shape": "S6b"
               },
               "Body": {
                 "type": "structure",
                 "members": {
                   "Text": {
-                    "shape": "S5v"
+                    "shape": "S6b"
                   },
                   "Html": {
-                    "shape": "S5v"
+                    "shape": "S6b"
                   }
                 }
               }
             }
           },
           "ReplyToAddresses": {
-            "shape": "S4p"
+            "shape": "S53"
           },
           "ReturnPath": {},
           "SourceArn": {},
           "ReturnPathArn": {},
           "Tags": {
-            "shape": "S5g"
+            "shape": "S5u"
           },
           "ConfigurationSetName": {}
         }
@@ -56366,7 +56473,7 @@ module.exports={
         "members": {
           "Source": {},
           "Destinations": {
-            "shape": "S4p"
+            "shape": "S53"
           },
           "RawMessage": {
             "type": "structure",
@@ -56383,7 +56490,7 @@ module.exports={
           "SourceArn": {},
           "ReturnPathArn": {},
           "Tags": {
-            "shape": "S5g"
+            "shape": "S5u"
           },
           "ConfigurationSetName": {}
         }
@@ -56411,16 +56518,16 @@ module.exports={
         "members": {
           "Source": {},
           "Destination": {
-            "shape": "S5n"
+            "shape": "S61"
           },
           "ReplyToAddresses": {
-            "shape": "S4p"
+            "shape": "S53"
           },
           "ReturnPath": {},
           "SourceArn": {},
           "ReturnPathArn": {},
           "Tags": {
-            "shape": "S5g"
+            "shape": "S5u"
           },
           "ConfigurationSetName": {},
           "Template": {},
@@ -56670,6 +56777,22 @@ module.exports={
         "members": {}
       }
     },
+    "UpdateCustomVerificationEmailTemplate": {
+      "input": {
+        "type": "structure",
+        "required": [
+          "TemplateName"
+        ],
+        "members": {
+          "TemplateName": {},
+          "FromEmailAddress": {},
+          "TemplateSubject": {},
+          "TemplateContent": {},
+          "SuccessRedirectionURL": {},
+          "FailureRedirectionURL": {}
+        }
+      }
+    },
     "UpdateReceiptRule": {
       "input": {
         "type": "structure",
@@ -56680,7 +56803,7 @@ module.exports={
         "members": {
           "RuleSetName": {},
           "Rule": {
-            "shape": "S11"
+            "shape": "S18"
           }
         }
       },
@@ -56698,7 +56821,7 @@ module.exports={
         ],
         "members": {
           "Template": {
-            "shape": "S1t"
+            "shape": "S20"
           }
         }
       },
@@ -56726,7 +56849,7 @@ module.exports={
         ],
         "members": {
           "DkimTokens": {
-            "shape": "S37"
+            "shape": "S3g"
           }
         }
       }
@@ -56857,7 +56980,7 @@ module.exports={
         "CustomRedirectDomain": {}
       }
     },
-    "St": {
+    "S10": {
       "type": "structure",
       "required": [
         "Name",
@@ -56878,7 +57001,7 @@ module.exports={
         }
       }
     },
-    "S11": {
+    "S18": {
       "type": "structure",
       "required": [
         "Name"
@@ -56985,7 +57108,7 @@ module.exports={
         }
       }
     },
-    "S1t": {
+    "S20": {
       "type": "structure",
       "required": [
         "TemplateName"
@@ -56997,7 +57120,7 @@ module.exports={
         "HtmlPart": {}
       }
     },
-    "S2m": {
+    "S2t": {
       "type": "structure",
       "members": {
         "Name": {},
@@ -57006,43 +57129,29 @@ module.exports={
         }
       }
     },
-    "S2o": {
+    "S2v": {
       "type": "list",
       "member": {
-        "shape": "S11"
+        "shape": "S18"
       }
     },
-    "S32": {
+    "S3b": {
       "type": "list",
       "member": {}
     },
-    "S37": {
+    "S3g": {
       "type": "list",
       "member": {}
     },
-    "S3m": {
+    "S3v": {
       "type": "list",
       "member": {}
     },
-    "S4p": {
+    "S53": {
       "type": "list",
       "member": {}
     },
-    "S51": {
-      "type": "list",
-      "member": {
-        "type": "structure",
-        "required": [
-          "Name",
-          "Value"
-        ],
-        "members": {
-          "Name": {},
-          "Value": {}
-        }
-      }
-    },
-    "S5g": {
+    "S5f": {
       "type": "list",
       "member": {
         "type": "structure",
@@ -57056,21 +57165,35 @@ module.exports={
         }
       }
     },
-    "S5n": {
+    "S5u": {
+      "type": "list",
+      "member": {
+        "type": "structure",
+        "required": [
+          "Name",
+          "Value"
+        ],
+        "members": {
+          "Name": {},
+          "Value": {}
+        }
+      }
+    },
+    "S61": {
       "type": "structure",
       "members": {
         "ToAddresses": {
-          "shape": "S4p"
+          "shape": "S53"
         },
         "CcAddresses": {
-          "shape": "S4p"
+          "shape": "S53"
         },
         "BccAddresses": {
-          "shape": "S4p"
+          "shape": "S53"
         }
       }
     },
-    "S5v": {
+    "S6b": {
       "type": "structure",
       "required": [
         "Data"
@@ -57085,6 +57208,11 @@ module.exports={
 },{}],76:[function(require,module,exports){
 module.exports={
   "pagination": {
+    "ListCustomVerificationEmailTemplates": {
+      "input_token": "NextToken",
+      "limit_key": "MaxResults",
+      "output_token": "NextToken"
+    },
     "ListIdentities": {
       "input_token": "NextToken",
       "limit_key": "MaxItems",
@@ -63547,7 +63675,10 @@ module.exports={
               "ruleDisabled": {
                 "type": "boolean"
               },
-              "awsIotSqlVersion": {}
+              "awsIotSqlVersion": {},
+              "errorAction": {
+                "shape": "S2w"
+              }
             }
           }
         }
@@ -65520,194 +65651,200 @@ module.exports={
         "ruleDisabled": {
           "type": "boolean"
         },
-        "awsIotSqlVersion": {}
+        "awsIotSqlVersion": {},
+        "errorAction": {
+          "shape": "S2w"
+        }
       }
     },
     "S2v": {
       "type": "list",
       "member": {
-        "type": "structure",
-        "members": {
-          "dynamoDB": {
-            "type": "structure",
-            "required": [
-              "tableName",
-              "roleArn",
-              "hashKeyField",
-              "hashKeyValue"
-            ],
-            "members": {
-              "tableName": {},
-              "roleArn": {},
-              "operation": {},
-              "hashKeyField": {},
-              "hashKeyValue": {},
-              "hashKeyType": {},
-              "rangeKeyField": {},
-              "rangeKeyValue": {},
-              "rangeKeyType": {},
-              "payloadField": {}
-            }
-          },
-          "dynamoDBv2": {
-            "type": "structure",
-            "members": {
-              "roleArn": {},
-              "putItem": {
-                "type": "structure",
-                "required": [
-                  "tableName"
-                ],
-                "members": {
-                  "tableName": {}
-                }
+        "shape": "S2w"
+      }
+    },
+    "S2w": {
+      "type": "structure",
+      "members": {
+        "dynamoDB": {
+          "type": "structure",
+          "required": [
+            "tableName",
+            "roleArn",
+            "hashKeyField",
+            "hashKeyValue"
+          ],
+          "members": {
+            "tableName": {},
+            "roleArn": {},
+            "operation": {},
+            "hashKeyField": {},
+            "hashKeyValue": {},
+            "hashKeyType": {},
+            "rangeKeyField": {},
+            "rangeKeyValue": {},
+            "rangeKeyType": {},
+            "payloadField": {}
+          }
+        },
+        "dynamoDBv2": {
+          "type": "structure",
+          "members": {
+            "roleArn": {},
+            "putItem": {
+              "type": "structure",
+              "required": [
+                "tableName"
+              ],
+              "members": {
+                "tableName": {}
               }
             }
-          },
-          "lambda": {
-            "type": "structure",
-            "required": [
-              "functionArn"
-            ],
-            "members": {
-              "functionArn": {}
+          }
+        },
+        "lambda": {
+          "type": "structure",
+          "required": [
+            "functionArn"
+          ],
+          "members": {
+            "functionArn": {}
+          }
+        },
+        "sns": {
+          "type": "structure",
+          "required": [
+            "targetArn",
+            "roleArn"
+          ],
+          "members": {
+            "targetArn": {},
+            "roleArn": {},
+            "messageFormat": {}
+          }
+        },
+        "sqs": {
+          "type": "structure",
+          "required": [
+            "roleArn",
+            "queueUrl"
+          ],
+          "members": {
+            "roleArn": {},
+            "queueUrl": {},
+            "useBase64": {
+              "type": "boolean"
             }
-          },
-          "sns": {
-            "type": "structure",
-            "required": [
-              "targetArn",
-              "roleArn"
-            ],
-            "members": {
-              "targetArn": {},
-              "roleArn": {},
-              "messageFormat": {}
-            }
-          },
-          "sqs": {
-            "type": "structure",
-            "required": [
-              "roleArn",
-              "queueUrl"
-            ],
-            "members": {
-              "roleArn": {},
-              "queueUrl": {},
-              "useBase64": {
-                "type": "boolean"
-              }
-            }
-          },
-          "kinesis": {
-            "type": "structure",
-            "required": [
-              "roleArn",
-              "streamName"
-            ],
-            "members": {
-              "roleArn": {},
-              "streamName": {},
-              "partitionKey": {}
-            }
-          },
-          "republish": {
-            "type": "structure",
-            "required": [
-              "roleArn",
-              "topic"
-            ],
-            "members": {
-              "roleArn": {},
-              "topic": {}
-            }
-          },
-          "s3": {
-            "type": "structure",
-            "required": [
-              "roleArn",
-              "bucketName",
-              "key"
-            ],
-            "members": {
-              "roleArn": {},
-              "bucketName": {},
-              "key": {},
-              "cannedAcl": {}
-            }
-          },
-          "firehose": {
-            "type": "structure",
-            "required": [
-              "roleArn",
-              "deliveryStreamName"
-            ],
-            "members": {
-              "roleArn": {},
-              "deliveryStreamName": {},
-              "separator": {}
-            }
-          },
-          "cloudwatchMetric": {
-            "type": "structure",
-            "required": [
-              "roleArn",
-              "metricNamespace",
-              "metricName",
-              "metricValue",
-              "metricUnit"
-            ],
-            "members": {
-              "roleArn": {},
-              "metricNamespace": {},
-              "metricName": {},
-              "metricValue": {},
-              "metricUnit": {},
-              "metricTimestamp": {}
-            }
-          },
-          "cloudwatchAlarm": {
-            "type": "structure",
-            "required": [
-              "roleArn",
-              "alarmName",
-              "stateReason",
-              "stateValue"
-            ],
-            "members": {
-              "roleArn": {},
-              "alarmName": {},
-              "stateReason": {},
-              "stateValue": {}
-            }
-          },
-          "elasticsearch": {
-            "type": "structure",
-            "required": [
-              "roleArn",
-              "endpoint",
-              "index",
-              "type",
-              "id"
-            ],
-            "members": {
-              "roleArn": {},
-              "endpoint": {},
-              "index": {},
-              "type": {},
-              "id": {}
-            }
-          },
-          "salesforce": {
-            "type": "structure",
-            "required": [
-              "token",
-              "url"
-            ],
-            "members": {
-              "token": {},
-              "url": {}
-            }
+          }
+        },
+        "kinesis": {
+          "type": "structure",
+          "required": [
+            "roleArn",
+            "streamName"
+          ],
+          "members": {
+            "roleArn": {},
+            "streamName": {},
+            "partitionKey": {}
+          }
+        },
+        "republish": {
+          "type": "structure",
+          "required": [
+            "roleArn",
+            "topic"
+          ],
+          "members": {
+            "roleArn": {},
+            "topic": {}
+          }
+        },
+        "s3": {
+          "type": "structure",
+          "required": [
+            "roleArn",
+            "bucketName",
+            "key"
+          ],
+          "members": {
+            "roleArn": {},
+            "bucketName": {},
+            "key": {},
+            "cannedAcl": {}
+          }
+        },
+        "firehose": {
+          "type": "structure",
+          "required": [
+            "roleArn",
+            "deliveryStreamName"
+          ],
+          "members": {
+            "roleArn": {},
+            "deliveryStreamName": {},
+            "separator": {}
+          }
+        },
+        "cloudwatchMetric": {
+          "type": "structure",
+          "required": [
+            "roleArn",
+            "metricNamespace",
+            "metricName",
+            "metricValue",
+            "metricUnit"
+          ],
+          "members": {
+            "roleArn": {},
+            "metricNamespace": {},
+            "metricName": {},
+            "metricValue": {},
+            "metricUnit": {},
+            "metricTimestamp": {}
+          }
+        },
+        "cloudwatchAlarm": {
+          "type": "structure",
+          "required": [
+            "roleArn",
+            "alarmName",
+            "stateReason",
+            "stateValue"
+          ],
+          "members": {
+            "roleArn": {},
+            "alarmName": {},
+            "stateReason": {},
+            "stateValue": {}
+          }
+        },
+        "elasticsearch": {
+          "type": "structure",
+          "required": [
+            "roleArn",
+            "endpoint",
+            "index",
+            "type",
+            "id"
+          ],
+          "members": {
+            "roleArn": {},
+            "endpoint": {},
+            "index": {},
+            "type": {},
+            "id": {}
+          }
+        },
+        "salesforce": {
+          "type": "structure",
+          "required": [
+            "token",
+            "url"
+          ],
+          "members": {
+            "token": {},
+            "url": {}
           }
         }
       }
@@ -73674,6 +73811,9 @@ module.exports={
   "serverlessapplicationrepository": {
     "prefix": "serverlessrepo",
     "name": "ServerlessApplicationRepository"
+  },
+  "servicediscovery": {
+    "name": "ServiceDiscovery"
   }
 }
 },{}],108:[function(require,module,exports){
@@ -73781,6 +73921,9 @@ module.exports={
     "DeleteDashboards": {
       "input": {
         "type": "structure",
+        "required": [
+          "DashboardNames"
+        ],
         "members": {
           "DashboardNames": {
             "type": "list",
@@ -73922,6 +74065,9 @@ module.exports={
     "GetDashboard": {
       "input": {
         "type": "structure",
+        "required": [
+          "DashboardName"
+        ],
         "members": {
           "DashboardName": {}
         }
@@ -74111,6 +74257,10 @@ module.exports={
     "PutDashboard": {
       "input": {
         "type": "structure",
+        "required": [
+          "DashboardName",
+          "DashboardBody"
+        ],
         "members": {
           "DashboardName": {},
           "DashboardBody": {}
@@ -74172,6 +74322,9 @@ module.exports={
           },
           "Unit": {},
           "EvaluationPeriods": {
+            "type": "integer"
+          },
+          "DatapointsToAlarm": {
             "type": "integer"
           },
           "Threshold": {
@@ -74308,6 +74461,9 @@ module.exports={
           "EvaluationPeriods": {
             "type": "integer"
           },
+          "DatapointsToAlarm": {
+            "type": "integer"
+          },
           "Threshold": {
             "type": "double"
           },
@@ -74339,7 +74495,8 @@ module.exports={
           "ComparisonOperator",
           "ExtendedStatistic",
           "TreatMissingData",
-          "EvaluateLowSampleCountPercentile"
+          "EvaluateLowSampleCountPercentile",
+          "DatapointsToAlarm"
         ]
       }
     },
@@ -104248,7 +104405,7 @@ module.exports={
         "type": "structure",
         "members": {
           "TagOptionDetail": {
-            "shape": "S24"
+            "shape": "S25"
           }
         }
       }
@@ -104400,7 +104557,7 @@ module.exports={
             "shape": "S1a"
           },
           "TagOptions": {
-            "shape": "S2o"
+            "shape": "S2p"
           }
         }
       }
@@ -104423,7 +104580,7 @@ module.exports={
             "shape": "S1t"
           },
           "ProvisioningArtifacts": {
-            "shape": "S2r"
+            "shape": "S2s"
           }
         }
       }
@@ -104466,7 +104623,7 @@ module.exports={
             "shape": "S1a"
           },
           "TagOptions": {
-            "shape": "S2o"
+            "shape": "S2p"
           }
         }
       }
@@ -104489,7 +104646,7 @@ module.exports={
             "shape": "S1t"
           },
           "ProvisioningArtifacts": {
-            "shape": "S2r"
+            "shape": "S2s"
           }
         }
       }
@@ -104509,7 +104666,7 @@ module.exports={
         "type": "structure",
         "members": {
           "ProvisionedProductDetail": {
-            "shape": "S32"
+            "shape": "S33"
           }
         }
       }
@@ -104585,7 +104742,7 @@ module.exports={
             }
           },
           "ConstraintSummaries": {
-            "shape": "S3o"
+            "shape": "S3p"
           },
           "UsageInstructions": {
             "type": "list",
@@ -104632,7 +104789,7 @@ module.exports={
         "type": "structure",
         "members": {
           "RecordDetail": {
-            "shape": "S41"
+            "shape": "S42"
           },
           "RecordOutputs": {
             "type": "list",
@@ -104663,7 +104820,7 @@ module.exports={
         "type": "structure",
         "members": {
           "TagOptionDetail": {
-            "shape": "S24"
+            "shape": "S25"
           }
         }
       }
@@ -104736,7 +104893,7 @@ module.exports={
         "type": "structure",
         "members": {
           "PortfolioDetails": {
-            "shape": "S4s"
+            "shape": "S4t"
           },
           "NextPageToken": {}
         }
@@ -104796,7 +104953,7 @@ module.exports={
               "members": {
                 "Id": {},
                 "ConstraintSummaries": {
-                  "shape": "S3o"
+                  "shape": "S3p"
                 },
                 "Tags": {
                   "shape": "S1a"
@@ -104846,7 +105003,7 @@ module.exports={
         "type": "structure",
         "members": {
           "PortfolioDetails": {
-            "shape": "S4s"
+            "shape": "S4t"
           },
           "NextPageToken": {}
         }
@@ -104871,7 +105028,7 @@ module.exports={
         "type": "structure",
         "members": {
           "PortfolioDetails": {
-            "shape": "S4s"
+            "shape": "S4t"
           },
           "NextPageToken": {}
         }
@@ -104939,7 +105096,7 @@ module.exports={
         "members": {
           "AcceptLanguage": {},
           "AccessLevelFilter": {
-            "shape": "S5g"
+            "shape": "S5h"
           },
           "SearchFilter": {
             "type": "structure",
@@ -104960,7 +105117,7 @@ module.exports={
           "RecordDetails": {
             "type": "list",
             "member": {
-              "shape": "S41"
+              "shape": "S42"
             }
           },
           "NextPageToken": {}
@@ -105028,7 +105185,7 @@ module.exports={
         "type": "structure",
         "members": {
           "TagOptionDetails": {
-            "shape": "S2o"
+            "shape": "S2p"
           },
           "PageToken": {}
         }
@@ -105075,7 +105232,7 @@ module.exports={
         "type": "structure",
         "members": {
           "RecordDetail": {
-            "shape": "S41"
+            "shape": "S42"
           }
         }
       }
@@ -105102,7 +105259,7 @@ module.exports={
         "members": {
           "AcceptLanguage": {},
           "AccessLevelFilter": {
-            "shape": "S5g"
+            "shape": "S5h"
           },
           "PageSize": {
             "type": "integer"
@@ -105116,7 +105273,7 @@ module.exports={
           "ProvisionedProducts": {
             "type": "list",
             "member": {
-              "shape": "S32"
+              "shape": "S33"
             }
           },
           "NextPageToken": {}
@@ -105129,7 +105286,7 @@ module.exports={
         "members": {
           "AcceptLanguage": {},
           "Filters": {
-            "shape": "S6e"
+            "shape": "S6f"
           },
           "PageSize": {
             "type": "integer"
@@ -105175,7 +105332,7 @@ module.exports={
           "AcceptLanguage": {},
           "PortfolioId": {},
           "Filters": {
-            "shape": "S6e"
+            "shape": "S6f"
           },
           "SortBy": {},
           "SortOrder": {},
@@ -105221,7 +105378,7 @@ module.exports={
         "type": "structure",
         "members": {
           "RecordDetail": {
-            "shape": "S41"
+            "shape": "S42"
           }
         }
       }
@@ -105265,7 +105422,7 @@ module.exports={
             "shape": "S12"
           },
           "RemoveTags": {
-            "shape": "S72"
+            "shape": "S73"
           }
         }
       },
@@ -105301,7 +105458,7 @@ module.exports={
             "shape": "S12"
           },
           "RemoveTags": {
-            "shape": "S72"
+            "shape": "S73"
           }
         }
       },
@@ -105352,7 +105509,7 @@ module.exports={
         "type": "structure",
         "members": {
           "RecordDetail": {
-            "shape": "S41"
+            "shape": "S42"
           }
         }
       }
@@ -105369,7 +105526,10 @@ module.exports={
           "ProductId": {},
           "ProvisioningArtifactId": {},
           "Name": {},
-          "Description": {}
+          "Description": {},
+          "Active": {
+            "type": "boolean"
+          }
         }
       },
       "output": {
@@ -105403,7 +105563,7 @@ module.exports={
         "type": "structure",
         "members": {
           "TagOptionDetail": {
-            "shape": "S24"
+            "shape": "S25"
           }
         }
       }
@@ -105514,10 +105674,13 @@ module.exports={
         "Type": {},
         "CreatedTime": {
           "type": "timestamp"
+        },
+        "Active": {
+          "type": "boolean"
         }
       }
     },
-    "S24": {
+    "S25": {
       "type": "structure",
       "members": {
         "Key": {},
@@ -105528,13 +105691,13 @@ module.exports={
         "Id": {}
       }
     },
-    "S2o": {
+    "S2p": {
       "type": "list",
       "member": {
-        "shape": "S24"
+        "shape": "S25"
       }
     },
-    "S2r": {
+    "S2s": {
       "type": "list",
       "member": {
         "type": "structure",
@@ -105548,7 +105711,7 @@ module.exports={
         }
       }
     },
-    "S32": {
+    "S33": {
       "type": "structure",
       "members": {
         "Name": {},
@@ -105564,7 +105727,7 @@ module.exports={
         "LastRecordId": {}
       }
     },
-    "S3o": {
+    "S3p": {
       "type": "list",
       "member": {
         "type": "structure",
@@ -105574,7 +105737,7 @@ module.exports={
         }
       }
     },
-    "S41": {
+    "S42": {
       "type": "structure",
       "members": {
         "RecordId": {},
@@ -105614,20 +105777,20 @@ module.exports={
         }
       }
     },
-    "S4s": {
+    "S4t": {
       "type": "list",
       "member": {
         "shape": "S17"
       }
     },
-    "S5g": {
+    "S5h": {
       "type": "structure",
       "members": {
         "Key": {},
         "Value": {}
       }
     },
-    "S6e": {
+    "S6f": {
       "type": "map",
       "key": {},
       "value": {
@@ -105635,7 +105798,7 @@ module.exports={
         "member": {}
       }
     },
-    "S72": {
+    "S73": {
       "type": "list",
       "member": {}
     }
@@ -119439,7 +119602,7 @@ module.exports = AWS;
 AWS.util.update(AWS, {
 
 
-  VERSION: '2.162.0',
+  VERSION: '2.167.0',
 
 
   Signers: {},
