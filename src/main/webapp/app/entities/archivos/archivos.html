@@ -1,70 +1,80 @@
 <!-->
-<div ng-cloak>  
-<div class="row">
-                             <h3> <div style="font-family: 'Inconsolata', monospace;"> Sube los mejores documentos para tus clases!</div> </h3>
-                             <div style="margin-top: 100px;"> <img class="hidden-xs hidden-sm col-sm-offset-2 style="margin-left: 100px;margin-top: 100px" src="content/images/arrow3.png"></div>
-                        </div>           
-    <div  ng-switch="vm.isAuthenticated()" style="text-align:center;">
-                        
-                        
-                            <input class="btn btn-primary" style="align-top:100px" id="file-chooser" type="file"  accept="application/pdf" />
+<div ng-cloak>
+    <div class="row">
+        <h3>
+            <div style="font-family: 'Inconsolata', monospace;"> Sube los mejores documentos para tus clases!</div>
+        </h3>
 
-                            <div id="tableDiv" class="dropdown" style="display: inline-block;">
-                                <button id="tableButton" class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">
-                                    Materia
-                                    <span class="caret"></span>
-                                </button>
-                                <ul id="tableMenu" class="dropdown-menu">
-                                    <li><a>Física</a></li>
-                                    <li><a>Anadec</a></li>
-                                </ul>
-                            </div>
-                             
-                            <button id="upload-button" class="btn btn-primary pull-right">Subir archivos</button>
+        <div ng-switch="vm.isAuthenticated()">
 
 
-                        <div  class="row pull-right" ui-sref-active="active" ng-switch-when="false">
-                            <div class="alert alert-warning">
-                             <strong>¡Atención!</strong> Sólo se pueden subir archivos tras iniciar sesión.
-                            </div>
-                         </div>
+            <input class="btn btn-primary" style="align-top:100px" id="file-chooser" type="file" accept="application/pdf" />
+            <br>
+
+            <div id="tableDiv" class="dropdown" style="display: inline-block;">
+                <button id="tableButton" class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">
+                    Materia
+                    <span class="caret"></span>
+                </button>
+                <ul id="tableMenu" class="dropdown-menu">
+                    <li>
+                        <a>Física</a>
+                    </li>
+                    <li>
+                        <a>Anadec</a>
+                    </li>
+                </ul>
+            </div>
+
+            <button id="upload-button" class="btn btn-warning ">Subir archivos</button>
+
+
+            <div class="row pull-right" ui-sref-active="active" ng-switch-when="false">
+                <div class="alert alert-warning">
+                    <strong>¡Atención!</strong> Sólo se pueden subir archivos tras iniciar sesión.
+                </div>
+            </div>
+        </div>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <div class="row">
+
+            <section id="items" name="items">
+
+                <div class="table-responsive">
+                    <table class="jh-table table table-striped">
+                        <tbody>
+                            <tr ng-repeat="archivo in $scope.archivitos">
+                                <td>
+                                    {{$index}}
+                                </td>
+                                <td>
+                                    <img src=https://image.flaticon.com/icons/svg/337/337946.svg alt='PDF' width='70' height='70'>
+                                </td>
+                                <td>
+                                    {{archivo.key}}
+                                </td>
+                                <td>
+                                    {{archivo.size/1024}}kbs
+                                </td>
+
+                            </tr>
+
+                        </tbody>
+                    </table>
+                </div>
+        </div>
+        </section>
     </div>
-    <br><br><br><br><br>
-   <div class="row">
-    
-   <section id="items" name="items">
-        
-                        <div class="table-responsive">
-                             <table class="jh-table table table-striped">
-                            <tbody>
-                                <tr ng-repeat="archivo in $scope.archivitos">
-                                     <td>
-                                         {{$index}}
-                                     </td>
-                                     <td>
-                                         <img src=https://image.flaticon.com/icons/svg/337/337946.svg alt='PDF' width='70' height='70'>
-                                     </td>
-                                     <td>
-                                         {{archivo.key}}
-                                     </td>
-                                     <td>
-                                         {{archivo.size/1024}}kbs
-                                     </td>
-
-                                </tr>
-                               
-                            </tbody>
-                               </table>      
-                            </div>
-                        </div>
-    </section> 
-</div>
 </div>
 <!-->
 
 
-    <link href="https://fonts.googleapis.com/css?family=Quicksand:300" rel="stylesheet">
-    <style>
+<link href="https://fonts.googleapis.com/css?family=Quicksand:300" rel="stylesheet">
+<style>
     body {
         font-family: 'Quicksand', sans-serif;
     }
@@ -76,24 +86,27 @@
         <div ng-repeat="materia in materias">
             <div class="col-sm-4 col-md-4">
                 <div class="post">
-                    <img src="content/images/folder.png" class="img-responsive"/>
-                    <span class="post-title"><b> {{materia.nombre}} </b><br/> </span>
-                    <button class="btn btn-warning btn-sm" id="btnModal" data-toggle="modal" data-target="#modal{{materia.nombre}}">Leer más</button>
+                    <a id="btnModal" data-toggle="modal" data-target="#modal{{materia.nombre}}">
+                        <img src="content/images/folder.png" class="img-responsive" />
+                    </a>
+                    <br>
+                    <span class="post-title">
+                        <b> {{materia.nombre}} </span>
                     <div class="modal fade" id="modal{{materia.nombre}}" role="dialog">
                         <div class="modal-dialog">
                             <div class="modal-content">
                                 <div class="modal-header">
                                     <button type="button" class="close" data-dismiss="modal{{materia.nombre}}">&times;</button>
-                                    <h4 class="modal-title" style="color:#000" >¡Mira los archivos que tenemos para ti!</h4>
+                                    <h4 class="modal-title" style="color:#000">¡Mira los archivos que tenemos para ti!</h4>
                                 </div>
                                 <div class="modal-body">
                                     <div class="row">
                                         <div class=" col-sm-12">
-                                            <p style="color:#000" class="list-group-item"> 
+                                            <p style="color:#000" class="list-group-item">
                                                 <div ng-repeat="url in materia.urls">
                                                     <a id="filename{{materia.nombre}}" target="_blank" style="color:#0000FF" href={{url.url}}>
                                                         {{url.fileName}}
-                                                    </a> 
+                                                    </a>
                                                     <br></br>
                                                 </div>
                                             </p>
