@@ -1,0 +1,35 @@
+entity Usuario{
+
+}
+
+entity File {
+	name String
+    route String
+}
+
+entity Rate {
+	dateRated ZonedDateTime
+	rate Double
+    descripcion String
+}
+
+relationship OneToMany{
+	File{rates} to Rate
+}
+relationship OneToMany {
+	Usuario{rates} to Rate
+}
+relationship OneToOne{
+	Usuario{user} to User
+}
+
+
+// Set pagination options
+paginate Rate with infinite-scroll
+
+dto * with mapstruct
+
+// Set service options to all except few
+service all with serviceImpl 
+// Set an angular suffix
+angularSuffix * with mySuffix

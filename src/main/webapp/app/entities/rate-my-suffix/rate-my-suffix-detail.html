@@ -1,0 +1,35 @@
+
+<div>
+    <h2><span data-translate="plataformaDocsApp.rate.detail.title">Rate</span> {{vm.rate.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="dl-horizontal jh-entity-details">
+        <dt><span data-translate="plataformaDocsApp.rate.dateRated">Date Rated</span></dt>
+        <dd>
+            <span>{{vm.rate.dateRated | date:'medium'}}</span>
+        </dd>
+        <dt><span data-translate="plataformaDocsApp.rate.rate">Rate</span></dt>
+        <dd>
+            <span>{{vm.rate.rate}}</span>
+        </dd>
+        <dt><span data-translate="plataformaDocsApp.rate.file">File</span></dt>
+        <dd>
+            <a ui-sref="file-my-suffix-detail({id:vm.rate.fileId})">{{vm.rate.fileId}}</a>
+        </dd>
+        <dt><span data-translate="plataformaDocsApp.rate.descripcion">Descripcion</span></dt>
+        <dd>
+            <a >{{vm.rate.descripcion}}</a>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            ui-sref="{{ vm.previousState }}"
+            class="btn btn-info">
+        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span data-translate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button" ui-sref="rate-my-suffix-detail.edit({id:vm.rate.id})" class="btn btn-primary">
+        <span class="glyphicon glyphicon-pencil"></span>
+        <span class="hidden-sm-down" data-translate="entity.action.edit"> Edit</span>
+    </button>
+</div>

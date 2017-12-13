@@ -1,0 +1,25 @@
+{
+    "plataformaDocsApp": {
+        "rate" : {
+            "home": {
+                "title": "Rates",
+                "createLabel": "Crear nuevo Rate",
+                "createOrEditLabel": "Crear o editar Rate"
+            },
+            "created": "Un nuevo Rate ha sido creado con el identificador {{ param }}",
+            "updated": "Un Rate ha sido actualizado con el identificador {{ param }}",
+            "deleted": "Un Rate ha sido eliminado con el identificador {{ param }}",
+            "delete": {
+                "question": "¿Seguro que quiere eliminar Rate {{ id }}?"
+            },
+            "detail": {
+                "title": "Rate"
+            },
+            "dateRated": "Date Rated",
+            "rate": "Rate",
+            "descripcion": "Descripcion",
+            "usuario": "Usuario",
+            "file": "File"
+        }
+    }
+}

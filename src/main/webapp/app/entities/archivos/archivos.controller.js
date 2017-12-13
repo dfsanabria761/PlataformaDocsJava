@@ -7,9 +7,9 @@
 		.module('plataformaDocsApp')
 
 		.controller('ArchivosController', ArchivosController);
-		ArchivosController.$inject = ['$scope', 'Principal', 'LoginService', '$state','Auth','ProfileService'];
+		ArchivosController.$inject = ['File','$scope', 'Principal', 'LoginService', '$state','Auth','ProfileService'];
 
-		function ArchivosController ($scope, Principal, LoginService, $state,Auth, ProfileService)
+		function ArchivosController (File,$scope, Principal, LoginService, $state,Auth, ProfileService)
 		{
 
 			var vm = this;
@@ -20,12 +20,23 @@
 			vm.login = LoginService.open;
 			vm.register = register;
 			vm.$state = $state;
+			vm.file = {};
 			$scope.$on('authenticationSuccess', function() 
 			{
 				getAccount();
 			});
 
 			getAccount();
+
+			 function onSaveSuccess (result) {
+           		 $scope.$emit('plataformaDocsApp:fileUpdate', result);
+          	  vm.isSaving = false;
+       		 }
+
+       		 function onSaveError () {
+           		 vm.isSaving = false;
+        		}
+
 
 			function getAccount() 
 			{
@@ -40,6 +51,9 @@
 			{
 				$state.go('register');
 			}
+			function save () {
+                File.save(vm.file, onSaveSuccess, onSaveError);
+       		}
 
 
 
@@ -72,6 +86,8 @@
 				return;
 			}
 			var file = fileChooser.files[0];
+			console.log(file);
+
 			var newFile = "";
 
 			if(materia == "Física")
@@ -82,14 +98,14 @@
 			{
 				newFile = "ANA-" + file.name;
 			}
-
+			vm.file.name = file.name;
 			var extension = file.type.split("/");
 			if(extension[1] == "pdf")
 			{
 				if (file) 
 				{
 					results.innerHTML = '';
-
+					
 					var params = {Key: newFile, ContentType: file.type, Body: file};
 					var action = bucket.upload(params, function (err, data) 
 					{
@@ -101,8 +117,10 @@
 						else
 						{
 							results.innerHTML = '¡Tu archivo fue correctamente subido!';
-							location.reload();
-						}
+							vm.file.route= data.Location.toString();
+							console.log(vm.file);
+							File.save(vm.file, onSaveSuccess, onSaveError);
+			 			}
 					});
 				} 
 				else 

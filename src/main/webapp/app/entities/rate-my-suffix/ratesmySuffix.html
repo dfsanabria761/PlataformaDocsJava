@@ -1,0 +1,71 @@
+<div>
+    <h2 data-translate="plataformaDocsApp.rate.home.title">Rates</h2>
+    <jhi-alert></jhi-alert>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-xs-4 no-padding-left">
+                <button class="btn btn-primary" ui-sref="rate-my-suffix.new" >
+                    <span class="glyphicon glyphicon-plus"></span>
+                    <span  data-translate="plataformaDocsApp.rate.home.createLabel">
+                        Create new Rate
+                    </span>
+                </button>
+            </div>
+        </div>
+    </div>
+    <br/>
+    <div class="table-responsive">
+        <table class="jh-table table table-striped">
+            <thead>
+                <tr jh-sort="vm.predicate" ascending="vm.reverse" callback="vm.reset()">
+                    <th jh-sort-by="id"><span data-translate="global.field.id">ID</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="dateRated"><span data-translate="plataformaDocsApp.rate.dateRated">Date Rated</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="rate"><span data-translate="plataformaDocsApp.rate.rate">Rate</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="fileId"><span data-translate="plataformaDocsApp.rate.file">File</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th ><span data-translate="plataformaDocsApp.rate.descripcion">descripcion</span> </th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody infinite-scroll="vm.loadPage(vm.page + 1)" infinite-scroll-disabled="vm.page >= vm.links['last']">
+                <tr ng-repeat="rate in vm.rates track by rate.id">
+                    <td><a ui-sref="rate-my-suffix-detail({id:rate.id})">{{rate.id}}</a></td>
+                    <td>{{rate.dateRated | date:'medium'}}</td>
+                    <td>{{rate.rate}}</td>
+                    <td>
+                        <div ui-sref="file-my-suffix-detail({id:rate.fileId})">
+                            <div ng-repeat="file in vm.files">
+                                <div ng-if="file.id==rate.fileId">
+                                    <a> {{file.name}}</a>
+                                </div>
+                            </div>
+                           
+                        </div>
+                    </td>
+                    <td>{{rate.descripcion}}</td>
+                    <td class="text-right">
+                        <div class="btn-group flex-btn-group-container">
+                            <button type="submit"
+                                    ui-sref="rate-my-suffix-detail({id:rate.id})"
+                                    class="btn btn-info btn-sm">
+                                <span class="glyphicon glyphicon-eye-open"></span>
+                                <span class="hidden-sm-down" data-translate="entity.action.view"></span>
+                            </button>
+                            <button type="submit"
+                                    ui-sref="rate-my-suffix.edit({id:rate.id})"
+                                    class="btn btn-primary btn-sm">
+                                <span class="glyphicon glyphicon-pencil"></span>
+                                <span class="hidden-sm-down" data-translate="entity.action.edit"></span>
+                            </button>
+                            <button type="submit"
+                                    ui-sref="rate-my-suffix.delete({id:rate.id})"
+                                    class="btn btn-danger btn-sm">
+                                <span class="glyphicon glyphicon-remove-circle"></span>
+                                <span class="hidden-sm-down" data-translate="entity.action.delete"></span>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

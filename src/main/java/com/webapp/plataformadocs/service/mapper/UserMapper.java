@@ -8,7 +8,10 @@ import org.springframework.stereotype.Service;
 
 import java.util.*;
 import java.util.stream.Collectors;
+import com.webapp.plataformadocs.domain.*;
+import com.webapp.plataformadocs.service.dto.UserDTO;
 
+import org.mapstruct.*;
 /**
  * Mapper for the entity User and its DTO called UserDTO.
  *
