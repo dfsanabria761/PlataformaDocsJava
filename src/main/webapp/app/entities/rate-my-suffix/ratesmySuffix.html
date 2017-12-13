@@ -30,7 +30,6 @@
         <table class="jh-table table table-striped">
             <thead>
                 <tr jh-sort="vm.predicate" ascending="vm.reverse" callback="vm.reset()">
-                    <th jh-sort-by="id"><span data-translate="global.field.id">ID</span> <span class="glyphicon glyphicon-sort"></span></th>
                     <th jh-sort-by="dateRated"><span data-translate="plataformaDocsApp.rate.dateRated">Date Rated</span> <span class="glyphicon glyphicon-sort"></span></th>
                     <th jh-sort-by="rate"><span data-translate="plataformaDocsApp.rate.rate">Rate</span> <span class="glyphicon glyphicon-sort"></span></th>
                     <th jh-sort-by="fileId"><span data-translate="plataformaDocsApp.rate.file">File</span> <span class="glyphicon glyphicon-sort"></span></th>
@@ -40,7 +39,6 @@
             </thead>
             <tbody infinite-scroll="vm.loadPage(vm.page + 1)" infinite-scroll-disabled="vm.page >= vm.links['last']">
                 <tr ng-repeat="rate in vm.rates |filter : buscarRates">
-                    <td><a ui-sref="rate-my-suffix-detail({id:rate.id})">{{rate.id}}</a></td>
                     <td>{{rate.dateRated | date:'medium'}}</td>
                     <td>{{rate.rate}}</td>
                     <td>
