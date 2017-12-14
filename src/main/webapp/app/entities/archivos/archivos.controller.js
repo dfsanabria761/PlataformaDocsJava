@@ -14,7 +14,9 @@
 
 			var vm = this;
 			vm.archivos =[];
-			$scope.materias = [{key:"ANA",nombre:"Anadec",urls:[]},{key:"FISI",nombre:"Física",urls:[]}];
+			$scope.materias = [{key:"ANA",nombre:"Análisis y Decisión de Inversión",urls:[]},{key:"FISI1",nombre:"Física 1",urls:[]},{key:"FISI2",nombre:"Física 2",urls:[]},{key:"APO1",nombre:"APO 1",urls:[]}
+			,{key:"APO2",nombre:"APO 2",urls:[]},{key:"DIFE",nombre:"Cálculo Diferencial",urls:[]},{key:"INTE",nombre:"Cálculo Integral",urls:[]},{key:"VECTO",nombre:"Cálculo Vectorial",urls:[]}
+			,{key:"PROBA1",nombre:"Probabilidad y estadística 1",urls:[]},{key:"PROBA2",nombre:"Probabilidad y estadística 2",urls:[]}];
 			vm.account = null;
 			vm.isAuthenticated = null;
 			vm.login = LoginService.open;
@@ -65,11 +67,11 @@
 
 			$("#tableMenu a").click(function(e)
 			{
-		e.preventDefault(); // cancel the link behaviour
-		var selText = $(this).text();
-		materia = selText;
-		$("#tableButton").text(selText);
-	});
+			e.preventDefault(); // cancel the link behaviour
+			var selText = $(this).text();
+			materia = selText;
+			$("#tableButton").text(selText);
+		});
 
 
 		// create bucket instance
@@ -90,14 +92,15 @@
 
 			var newFile = "";
 
-			if(materia == "Física")
+			for (var i = 0; i < $scope.materias.length; i++)
 			{
-				newFile = "FISI-" + file.name;
+				if(materia == $scope.materias[i].nombre)
+				{
+					newFile = $scope.materias[i].key + "-" + $scope.materias[i].nombre;
+					i = $scope.materias.length;
+				}
 			}
-			else if(materia == "Anadec")
-			{
-				newFile = "ANA-" + file.name;
-			}
+
 			vm.file.name = file.name;
 			var extension = file.type.split("/");
 			if(extension[1] == "pdf")
@@ -140,19 +143,6 @@
 			Delimiter: "/",
 			EncodingType: "url"
 		};
-
-		 /*
-		bucket.listObjects(delimiters, function (err, response) {
-			var pdf = "<img src=https://image.flaticon.com/icons/svg/337/337946.svg alt='PDF' width='70' height='70'>";
-			if (err) {
-				results.innerHTML = ("Error al subir datos: ", err);
-			} else {
-			vm.archivos=response.Contents;
-			return vm.archivos;
-			}
-			$scope.$broadcast("REFRESH");
-		});
-		*/
 
 		bucket.listObjects(delimiters,function (err, response)
 		{

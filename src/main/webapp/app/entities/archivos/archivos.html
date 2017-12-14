@@ -18,10 +18,34 @@
                 </button>
                 <ul id="tableMenu" class="dropdown-menu">
                     <li>
-                        <a>Física</a>
+                        <a>Física 1</a>
                     </li>
                     <li>
-                        <a>Anadec</a>
+                        <a>Física 2</a>
+                    </li>
+                    <li>
+                        <a>APO 1</a>
+                    </li>
+                    <li>
+                        <a>APO 2</a>
+                    </li>
+                    <li>
+                        <a>Cálculo Diferencial</a>
+                    </li>
+                    <li>
+                        <a>Cálculo Integral</a>
+                    </li>
+                    <li>
+                        <a>Cálculo Vectorial</a>
+                    </li>
+                    <li>
+                        <a>Probabilidad y estadística 1</a>
+                    </li>
+                    <li>
+                        <a>Probabilidad y estadística 2</a>
+                    </li>
+                    <li>
+                        <a>Análisis y Decisión de Inversión</a>
                     </li>
                 </ul>
             </div>
@@ -40,35 +64,6 @@
         <br>
         <br>
         <br>
-        <div class="row">
-
-            <section id="items" name="items">
-
-                <div class="table-responsive">
-                    <table class="jh-table table table-striped">
-                        <tbody>
-                            <tr ng-repeat="archivo in $scope.archivitos">
-                                <td>
-                                    {{$index}}
-                                </td>
-                                <td>
-                                    <img src=https://image.flaticon.com/icons/svg/337/337946.svg alt='PDF' width='70' height='70'>
-                                </td>
-                                <td>
-                                    {{archivo.key}}
-                                </td>
-                                <td>
-                                    {{archivo.size/1024}}kbs
-                                </td>
-
-                            </tr>
-
-                        </tbody>
-                    </table>
-                </div>
-        </div>
-        </section>
-    </div>
 </div>
 <!-->
 
@@ -84,19 +79,19 @@
     <div id="results"></div>
     <div class="row" id="allItems">
         <div ng-repeat="materia in materias">
-            <div class="col-sm-4 col-md-4">
+            <div class="col-sm-2 col-md-2">
                 <div class="post">
-                    <a id="btnModal" data-toggle="modal" data-target="#modal{{materia.nombre}}">
-                        <img src="content/images/folder.png" class="img-responsive" />
+                    <a id="btnModal" data-toggle="modal" data-target="#modal{{materia.key}}">
+                        <img src="content/images/folder.png" width="140" height="140" class="img-responsive" />
                     </a>
-                    <br>
                     <span class="post-title">
                         <b> {{materia.nombre}} </span>
-                    <div class="modal fade" id="modal{{materia.nombre}}" role="dialog">
+                            <br></br>
+                    <div class="modal fade" id="modal{{materia.key}}" role="dialog">
                         <div class="modal-dialog">
                             <div class="modal-content">
                                 <div class="modal-header">
-                                    <button type="button" class="close" data-dismiss="modal{{materia.nombre}}">&times;</button>
+                                    <button type="button" class="close" data-dismiss="modal{{materia.key}}">&times;</button>
                                     <h4 class="modal-title" style="color:#000"><strong>Mira los archivos que tenemos para ti!</strong></h4>
                                 </div>
                                 <div class="modal-body">
