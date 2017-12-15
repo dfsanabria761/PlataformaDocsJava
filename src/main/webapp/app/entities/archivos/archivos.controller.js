@@ -96,7 +96,7 @@
 			{
 				if(materia == $scope.materias[i].nombre)
 				{
-					newFile = $scope.materias[i].key + "-" + $scope.materias[i].nombre;
+					newFile = $scope.materias[i].key + "-" + file.name;
 					i = $scope.materias.length;
 				}
 			}
