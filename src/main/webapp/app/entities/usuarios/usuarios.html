@@ -20,9 +20,12 @@
             </tr>
             </thead>
             <tbody>
-            <tr ng-repeat="user in vm.users | filter:buscarUsuario">
-                <td>{{user.login}}</td>
-                <td>{{user.email}}</td>          
+            <tr ng-repeat="user in vm.users | filter:buscarUsuario" ng-show="user.show">
+                <div >
+                    <td>{{user.login}}</td>
+                    <td>{{user.email}}</td>   
+                </div>
+
             </tr>
             </tbody>
         </table>

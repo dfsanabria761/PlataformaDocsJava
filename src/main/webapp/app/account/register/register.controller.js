@@ -18,7 +18,7 @@
         vm.register = register;
         vm.registerAccount = {};
         vm.success = null;
-
+        vm.invalidMail=null;
         $timeout(function (){angular.element('#login').focus();});
 
         function register () {
@@ -30,7 +30,13 @@
                 vm.error = null;
                 vm.errorUserExists = null;
                 vm.errorEmailExists = null;
-                console.log(vm.registerAccount);
+                 vm.invalidMail=null;
+                vm.mailDomain =vm.registerAccount.email.split('@');
+
+                if(vm.mailDomain[1]!=='uniandes.edu.co'){
+                    vm.error = 'ERROR';
+                }
+                else{
                 Auth.createAccount(vm.registerAccount).then(function () {
                     vm.success = 'OK';
                 }).catch(function (response) {
@@ -43,6 +49,7 @@
                         vm.error = 'ERROR';
                     }
                 });
+            }
             }
         }
     }

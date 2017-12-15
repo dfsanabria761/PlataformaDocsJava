@@ -56,6 +56,14 @@
             vm.queryCount = vm.totalItems;
             vm.page = pagingParams.page;
             vm.users = data;
+            for (var i = vm.users.length - 1; i >= 0; i--) {
+                vm.users[i].show=true;
+                for (var j = vm.users[i].authorities.length - 1; j >= 0; j--) {
+                    if(vm.users[i].authorities[j]==='ROLE_ADMIN'){
+                        vm.users[i].show=false;
+                    }
+                }
+            }
         }
 
         function onError(error) {
