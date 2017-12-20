@@ -121,8 +121,8 @@
 						{
 							results.innerHTML = '¡Tu archivo fue correctamente subido!';
 							vm.file.route= data.Location.toString();
-							console.log(vm.file);
 							File.save(vm.file, onSaveSuccess, onSaveError);
+							location.reload();
 			 			}
 					});
 				} 
@@ -156,7 +156,10 @@
 						+ delimiters.Bucket 
 						+ delimiters.Delimiter 
 						+ response.Contents[i].Key;
-						$scope.materias[j].urls.push( {url:url,fileName:response.Contents[i].Key});
+						var newNameArray = response.Contents[i].Key.split("-");
+						var newName = newNameArray[1].split('+').join(" ");
+						console.log(newName);
+						$scope.materias[j].urls.push( {url:url,fileName:newName});
 					}
 				}
 			}
